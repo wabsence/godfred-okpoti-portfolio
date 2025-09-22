@@ -33,6 +33,22 @@ const Navigation = () => {
     setIsOpen(false)
   }
 
+  const handleResumeDownload = () => {
+    // Create a temporary link element
+    const link = document.createElement('a')
+    link.href = '/assets/Godfred_Okpoti_Resume.pdf' // Path to your resume file
+    link.download = 'Godfred_Okpoti_Resume.pdf' // Name for downloaded file
+    link.target = '_blank' // Open in new tab as fallback
+    
+    // Trigger download
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    
+    // Close mobile menu if open
+    setIsOpen(false)
+  }
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-dark-200/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
@@ -55,8 +71,12 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <button className="btn-primary">
-              <Download className="w-4 h-4 mr-2" />
+            <button 
+              onClick={handleResumeDownload}
+              className="btn-primary group"
+              title="Download Resume"
+            >
+              <Download className="w-4 h-4 mr-2 transition-transform group-hover:translate-y-0.5" />
               Resume
             </button>
           </div>
@@ -84,8 +104,12 @@ const Navigation = () => {
                     {item.label}
                   </button>
                 ))}
-                <button className="btn-primary w-fit mt-4">
-                  <Download className="w-4 h-4 mr-2" />
+                <button 
+                  onClick={handleResumeDownload}
+                  className="btn-primary w-fit mt-4 group"
+                  title="Download Resume"
+                >
+                  <Download className="w-4 h-4 mr-2 transition-transform group-hover:translate-y-0.5" />
                   Resume
                 </button>
               </div>

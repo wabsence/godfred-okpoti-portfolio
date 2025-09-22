@@ -72,8 +72,13 @@ const Contact = () => {
       label: 'Download Resume',
       description: 'Get my latest resume in PDF format',
       action: () => {
-        // Simulate resume download
-        window.open('#', '_blank')
+        const link = document.createElement('a')
+        link.href = '/assets/Godfred_Okpoti_Resume.pdf'
+        link.download = 'Godfred_Okpoti_Resume.pdf'
+        link.target = '_blank'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
       },
       primary: true
     },
