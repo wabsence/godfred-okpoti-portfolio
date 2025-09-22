@@ -53,7 +53,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-5 h-5" />,
       label: 'Location',
-      value: 'Washington, D.C. Metro Area',
+      value: 'Virgina, Stafford',
       link: '#',
       description: 'Open to remote opportunities'
     },
